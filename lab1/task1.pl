@@ -43,12 +43,12 @@ shift1(List, Res) :- % предикат, основанный на станда�
     reverse(Res1T, Res3),
     append(Res2, Res3, Res).
 
-print_last([H|T]) :-
+print_last([_|T]) :-
     print_last(T).
 print_last([T]) :-
     write(T),
     write(" ").
-print_first([H|[]]).
+print_first([_|[]]).
 print_first([H|T]) :-
     write(H),
     write(" "),

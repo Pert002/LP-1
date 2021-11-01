@@ -326,7 +326,7 @@ task3() :- % предикат, выполняющий третье подзад�
 
 ### Результат работы предикатов:
 ```
-2 ?- task1().
+3 ?- task1().
 
 Group 101:
 Петровский
@@ -367,6 +367,20 @@ Group 104:
 Average of 101 is 4
 Average of 102 is 3.814814814814815
 Average of 103 is 3.7708333333333335
+Average of 104 is 3.888888888888889
+true.
+
+3 ?- task2().
+
+Students haven't passed logical programming:
+
+Students haven't passed mathematical analysis:
+Клавиатурникова
+Блокчейнис
+Азурин
+
+Students haven't passed functional programming:
+Сидоркин
 Мышин
 Шарпин
 

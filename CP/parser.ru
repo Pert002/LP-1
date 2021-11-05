@@ -90,5 +90,5 @@ if File.exist?("familytree.ged")
     file.close
     writefile.close
 else
-    puts("Файла нет")
+    puts("File familytree.ged not found")
 end

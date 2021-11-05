@@ -62,12 +62,20 @@ relative(mother, X, Y) :-
     parents(X, _, Y).
 
 relative(grandmother, X, Y) :-
-    parents(X, F, M),
-    parents(F, _, Y); parents(M, _, Y).
+    parents(X, F, _),
+    parents(F, _, Y).
+
+relative(grandmother, X, Y) :-
+    parents(X, _, M),
+    parents(M, _, Y).
 
 relative(grandfather, X, Y) :-
-    parents(X, F, M),
-    parents(F, Y, _); parents(M, Y, _).
+    parents(X, F, _),
+    parents(F, Y, _).
+
+relative(grandfather, X, Y) :-
+    parents(X, _, F),
+    parents(F, Y, _).
 
 relative(child, X, Y) :-
     relative(father, Y, X); relative(mother, Y, X).

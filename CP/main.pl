@@ -1,4 +1,6 @@
-:-['tree.pl'].
+:- set_prolog_flag(encoding, utf8).
+
+:-['familytree.pl'].
 
 remove([], _Elem, []). % предикат удаления элемента из списка
 remove([Elem|T], Elem, TR) :- remove(T, Elem, TR), !.

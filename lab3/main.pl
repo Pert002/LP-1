@@ -41,9 +41,13 @@ dsearch1(P, G, R) :-
     dsearch1(P1, G, R).
 
 dsearch(X, R) :-
+    get_time(T0),
     sol(X, P),
     dsearch1([[X, [], []]], [[], [], P], R1),
-    reverse(R1, R).
+    reverse(R1, R),
+    get_time(T1),
+    T is T1 - T0,
+    write(T).
 
 disearch1([H | T], H, [H | T], _).
 disearch1(P, G, R, C) :-
@@ -53,11 +57,15 @@ disearch1(P, G, R, C) :-
     disearch1(P1, G, R, C1).
 
 disearch(X, R) :- 
+    get_time(T0),
     sol(X, P),
     dig(N),
     disearch1([[X, [], []]], [[], [], P], R1, N), !,
     reverse(R1, R2), 
-    more(R2, R).
+    more(R2, R),
+    get_time(T1),
+    T is T1 - T0,
+    write(T).
 
 wsearch1([[H | T] | _], H, [H | T]).
 wsearch1([H | I], P, R) :-
@@ -65,12 +73,20 @@ wsearch1([H | I], P, R) :-
    append(I, L, O),
    wsearch1(O, P, R).
 
-wsearch(X, R) :-
+wsearch2(X, R) :-
    sol(X, P),
    wsearch1([[[X, [], []]]], [[], [], P], R1),
    !,
    reverse(R1, R2),
    more(R2, R).
+
+wsearch(X, R) :-
+    get_time(T0),
+    wsearch2(X, R),
+    get_time(T1),
+    T is T1 - T0,
+    write(T).
+    
 
 findall1(P, R) :-
    findall(S, move(P, S), R);
